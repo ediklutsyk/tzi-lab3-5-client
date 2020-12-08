@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+          integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<div class="overlay-content" style="display: flex;" id="overlay">
+    <div class="content-auth">
+        <div class="menu">
+            <button id="btn-login" type="button" class="btn btn-primary" onclick="toggleMenu('login')">Login</button>
+            <button id="btn-signup" type="button" class="btn btn-outline-secondary" onclick="toggleMenu('signup')">
+                Sign Up
+            </button>
+        </div>
+        <div id="login-form" class="custom-form" style="display: block">
+            <div class="form-group">
+                <label for="username-login">Username</label>
+                <input type="text" class="form-control" id="username-login">
+                <div class="invalid-feedback">
+                    Should not be empty.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password-login">Password</label>
+                <input type="password" class="form-control" id="password-login" data-form="login">
+                <div class="invalid-feedback">
+                    Should not be empty.
+                </div>
+            </div>
+            <p class="login-error" id="login-error">
+            </p>
+            <div id="login">
+                <button disabled="disabled" type="submit" class="btn btn-primary submit" onclick="login()">Login</button>
+            </div>
+            <div id="lga" style="display: none">
+                <button id="lgaBtn" type="submit" class="btn btn-primary submit" onclick="login(true)">Logout all</button>
+            </div>
+        </div>
+        <div id="signup-form" class="custom-form" style="display: none">
+            <div class="form-group">
+                <label for="username-signup">Username</label>
+                <input type="text" class="form-control" id="username-signup">
+                <div class="invalid-feedback">
+                    Should not be empty.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password-signup">Password</label>
+                <input type="password" class="form-control" id="password-signup" data-form="signup">
+                <div class="invalid-feedback">
+                    Should not be empty and should match to confirm password.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" data-form="signup">
+                <div class="invalid-feedback">
+                    Passwords don't match
+                </div>
+            </div>
+            <p class="signup-message" id="signup-message">
+            </p>
+            <button disabled="disabled" type="submit" class="btn btn-primary submit" onclick="signup()">Sign Up</button>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <div class="content">
+        <div class="result">
+            <span id="result">Result</span>
+        </div>
+        <div class="menu">
+            <button id="btn-encode" type="button" class="btn btn-primary" onclick="toggleMenu('encode')">Encode</button>
+            <button id="btn-decode" type="button" class="btn btn-outline-secondary" onclick="toggleMenu('decode')">
+                Decode
+            </button>
+            <button id="btn-logout" type="button" class="btn btn-outline-secondary" onclick="logout()">
+                Logout
+            </button>
+<!--            <div class="form-check">-->
+<!--                <input type="checkbox" class="form-check-input" id="keepNotAlphabet">-->
+<!--                <label class="form-check-label" for="keepNotAlphabet">Keep not alphabet symbols</label>-->
+<!--            </div>-->
+        </div>
+        <div id="encode-form" class="custom-form" style="display: block">
+            <div class="form-group">
+                <label for="stringToEncode">String to encode</label>
+                <input type="text" class="form-control" id="stringToEncode">
+                <div class="invalid-feedback">
+                    Should not be empty
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="keyEncode">Key</label>
+                <input type="text" class="form-control" id="keyEncode">
+                <div class="invalid-feedback">
+                    Key should be numeric and contains not less then 6 digits
+                </div>
+            </div>
+            <button disabled="disabled" type="submit" class="btn btn-primary submit" onclick="encodeSubmit()">Encode
+            </button>
+        </div>
+        <div id="decode-form" class="custom-form" style="display: none">
+            <div class="form-group">
+                <label for="stringToDecode">String to decode</label>
+                <input type="text" class="form-control" id="stringToDecode">
+                <div class="invalid-feedback">
+                    Should not be empty
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="keyDecode">Key</label>
+                <input type="text" class="form-control" id="keyDecode">
+                <div class="invalid-feedback">
+                    Key should be numeric and contains not less then 6 digits
+                </div>
+            </div>
+            <button disabled="disabled" type="submit" class="btn btn-primary submit" onclick="decodeSubmit()">Decode
+            </button>
+        </div>
+    </div>
+</div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="api.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
